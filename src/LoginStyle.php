@@ -41,7 +41,7 @@ class LoginStyle
                     }
                 @endif
 
-                @if (!empty($backgroundColor))
+                @if (!empty($logo))
                     #login h1 a {
                         background-image: url({{ $logo }});
                         width: 150px;
