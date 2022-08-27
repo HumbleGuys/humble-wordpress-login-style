@@ -2,7 +2,7 @@
 
 namespace HumbleWordPressLoginStyle;
 
-use Extended\ACF\Fields\Image;
+use Extended\ACF\Fields\File;
 use Extended\ACF\Location;
 
 class ACFFields
@@ -12,7 +12,7 @@ class ACFFields
     public static function fields(): array
     {
         return [
-            Image::make('Logo', 'logo')->previewSize('thumbnail'),
+            File::make('Logo', 'logo')->returnFormat('url'),
         ];
     }
 
