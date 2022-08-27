@@ -9,10 +9,6 @@ class LoginStyle
 {
     public static function init()
     {
-        $logo = ACF::get('logo', 'loginStyle');
-        $backgroundColor = ACF::get('backgroundColor', 'loginStyle');
-        $linkColor = ACF::get('linkColor', 'loginStyle');
-
         $css =
         <<<'blade'
             <style type="text/css">
@@ -58,9 +54,9 @@ class LoginStyle
         blade;
 
         echo Blade::render($css, [
-            'logo' => $logo,
-            'backgroundColor' => $backgroundColor,
-            'linkColor' => $linkColor,
+            'logo' => ACF::get('logo', 'loginStyle'),
+            'backgroundColor' => ACF::get('backgroundColor', 'loginStyle'),
+            'linkColor' => ACF::get('linkColor', 'loginStyle'),
         ]);
     }
 }
