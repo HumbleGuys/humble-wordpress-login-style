@@ -35,6 +35,10 @@ class ServiceProvider extends SupportServiceProvider
                 <?php
             }
         });
+
+        Filter::add('login_headerurl', function () {
+            return get_home_url();
+        });
     }
 
     public function boot(): void
