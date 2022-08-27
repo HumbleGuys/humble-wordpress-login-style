@@ -28,7 +28,7 @@ class ServiceProvider extends SupportServiceProvider
             return Arr::add($mimes, 'svg', 'image/svg+xml');
         });
 
-        Action::add('login_enqueue_scripts', [LoginStyle::class, 'init']);
+        Action::add('login_enqueue_scripts', LoginStyle::class);
 
         Filter::add('login_headerurl', 'get_home_url');
     }

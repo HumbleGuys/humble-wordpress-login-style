@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Blade;
 
 class LoginStyle
 {
-    public static function init()
+    public function __invoke()
     {
         $css =
         <<<'blade'
