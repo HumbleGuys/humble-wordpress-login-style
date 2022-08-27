@@ -2,65 +2,65 @@
 
 namespace HumbleWordPressLoginStyle;
 
+use HumbleCore\Support\Facades\ACF;
+use Illuminate\Support\Facades\Blade;
+
 class LoginStyle
 {
     public static function init()
     {
-        $logo = get_field('logo', 'loginStyle');
-        $backgroundColor = get_field('backgroundColor', 'loginStyle');
-        $linkColor = get_field('linkColor', 'loginStyle'); ?>
-        <style type="text/css">
-            body {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 100%;
-            }
+        $logo = ACF::get('logo', 'loginStyle');
+        $backgroundColor = ACF::get('backgroundColor', 'loginStyle');
+        $linkColor = ACF::get('linkColor', 'loginStyle');
 
-            #login {
-                padding: 2rem 0 !important;
-            }
-            
-            #backtoblog,
-            .language-switcher {
-                display: none !important;
-            }
-        </style>
-        <?php
-
-        if (! empty($backgroundColor)) {
-            ?>
+        $css =
+        <<<'blade'
             <style type="text/css">
                 body {
-                    background-color: <?= $backgroundColor ?> !important;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
                 }
-            </style>
-            <?php
-        }
 
-        if (! empty($linkColor)) {
-            ?>
-            <style type="text/css">
-                .login #nav a, 
-                .login #backtoblog a {
-                    color: <?= $linkColor ?> !important;
+                #login {
+                    padding: 2rem 0 !important;
                 }
-            </style>
-            <?php
-        }
+                
+                #backtoblog,
+                .language-switcher {
+                    display: none !important;
+                }
 
-        if (! empty($logo)) {
-            ?>
-            <style type="text/css">
-                #login h1 a {
-                    background-image: url(<?= $logo ?>);
-                    width: 150px;
-                    height: 100px;
-                    background-size: contain;
-                    background-position: center;
-                }
+                @if (!empty($backgroundColor))
+                    body {
+                        background-color: {{ $backgroundColor }} !important;
+                    }
+                @endif
+
+                @if (!empty($linkColor))
+                    .login #nav a, 
+                    .login #backtoblog a {
+                        color: {{ $linkColor }} !important;
+                    }
+                @endif
+
+                @if (!empty($backgroundColor))
+                    #login h1 a {
+                        background-image: url({{ $logo }});
+                        width: 150px;
+                        height: 100px;
+                        background-size: contain;
+                        background-position: center;
+                    }
+                @endif
             </style>
-            <?php
-        }
+        blade;
+
+        echo Blade::render($css, [
+            'logo' => $logo,
+            'backgroundColor' => $backgroundColor,
+            'linkColor' => $linkColor,
+        ]);
     }
 }
