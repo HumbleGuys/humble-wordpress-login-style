@@ -4,6 +4,7 @@ namespace HumbleWordPressLoginStyle;
 
 use Extended\ACF\Fields\ColorPicker;
 use Extended\ACF\Fields\File;
+use Extended\ACF\Fields\Number;
 use Extended\ACF\Location;
 
 class ACFFields
@@ -14,6 +15,8 @@ class ACFFields
     {
         return [
             File::make('Logo', 'logo')->returnFormat('url'),
+            Number::make('Logo width', 'logoWidth')->max(320),
+            Number::make('Logo height', 'logoHeight'),
             ColorPicker::make('Background color', 'backgroundColor'),
             ColorPicker::make('Link color', 'linkColor'),
         ];

@@ -44,8 +44,8 @@ class LoginStyle
                 @if (!empty($logo))
                     #login h1 a {
                         background-image: url({{ $logo }});
-                        width: 150px;
-                        height: 100px;
+                        width: {{ $logoWidth }}px;
+                        height: {{ $logoHeight }}px;
                         background-size: contain;
                         background-position: center;
                     }
@@ -55,6 +55,8 @@ class LoginStyle
 
         echo Blade::render($css, [
             'logo' => ACF::get('logo', 'loginStyle'),
+            'logoWidth' => ACF::get('logoWidth', 'loginStyle') ?? 150,
+            'logoHeight' => ACF::get('logoHeight', 'loginStyle') ?? 100,
             'backgroundColor' => ACF::get('backgroundColor', 'loginStyle'),
             'linkColor' => ACF::get('linkColor', 'loginStyle'),
         ]);
