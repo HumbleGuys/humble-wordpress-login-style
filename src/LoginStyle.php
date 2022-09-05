@@ -50,6 +50,20 @@ class LoginStyle
                         background-position: center;
                     }
                 @endif
+
+                @if (!empty($transparentLoginBox))
+                    .login form {
+                        background: transparent !important;
+                        border: 0 !important;
+                        box-shadow: none !important;
+                    }
+                @endif
+
+                @if (!empty($loginBoxTextColor))
+                    .login form {
+                        color: {{ $loginBoxTextColor }} !important;
+                    }
+                @endif
             </style>
         blade;
 
@@ -59,6 +73,8 @@ class LoginStyle
             'logoHeight' => ACF::get('logoHeight', 'loginStyle') ?? 100,
             'backgroundColor' => ACF::get('backgroundColor', 'loginStyle'),
             'linkColor' => ACF::get('linkColor', 'loginStyle'),
+            'transparentLoginBox' => ACF::get('transparentLoginBox', 'loginStyle'),
+            'loginBoxTextColor' => ACF::get('loginBoxTextColor', 'loginStyle'),
         ]);
     }
 }
