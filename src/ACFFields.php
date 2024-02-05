@@ -15,7 +15,7 @@ class ACFFields
     public static function fields(): array
     {
         return [
-            File::make('Logo', 'logo')->returnFormat('url'),
+            File::make('Logo', 'logo')->format('url'),
             Number::make('Logo width', 'logoWidth')->max(320),
             Number::make('Logo height', 'logoHeight'),
             ColorPicker::make('Background color', 'backgroundColor'),
