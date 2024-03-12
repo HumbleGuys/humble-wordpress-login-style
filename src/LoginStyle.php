@@ -24,7 +24,8 @@ class LoginStyle
                 }
                 
                 #backtoblog,
-                .language-switcher {
+                .language-switcher,
+                .wpml-login-ls {
                     display: none !important;
                 }
 
